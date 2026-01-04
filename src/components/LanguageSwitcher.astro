@@ -22,8 +22,9 @@ function getPath(lang: Lang): string {
     <>
       <a
         href={getPath(code as Lang)}
+        data-lang={code}
         class:list={[
-          'px-2 py-1 rounded transition-colors',
+          'lang-switch px-2 py-1 rounded transition-colors',
           currentLang === code
             ? 'text-accent font-semibold'
             : 'text-neutral-400 hover:text-white'
@@ -37,3 +38,14 @@ function getPath(lang: Lang): string {
     </>
   ))}
 </div>
+
+<script>
+  document.querySelectorAll('.lang-switch').forEach((link) => {
+    link.addEventListener('click', () => {
+      const lang = (link as HTMLElement).dataset.lang;
+      if (lang) {
+        localStorage.setItem('language', lang);
+      }
+    });
+  });
+</script>

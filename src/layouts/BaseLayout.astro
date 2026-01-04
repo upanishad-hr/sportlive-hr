@@ -29,6 +29,83 @@ const t = useTranslations(lang);
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{t.meta.title}</title>
+    
+    <script is:inline>
+      // Theme detection with system preference
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      window.localStorage.setItem('theme', theme);
+
+      // Listen for system theme changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        const newTheme = e.matches ? 'dark' : 'light';
+        document.documentElement.classList.toggle('dark', e.matches);
+        localStorage.setItem('theme', newTheme);
+      });
+
+      // Language detection with browser preference
+      (function() {
+        const availableLangs = ['en', 'hr', 'de'];
+        const currentPath = window.location.pathname;
+
+        // Determine current language from URL
+        const langMatch = currentPath.match(/^\/(hr|de)(\/|$)/);
+        const currentLang = langMatch ? langMatch[1] : 'en';
+
+        // Check for saved preference
+        const savedLang = localStorage.getItem('language');
+
+        if (savedLang && availableLangs.includes(savedLang)) {
+          // Use saved preference if valid and different from current
+          if (savedLang !== currentLang) {
+            const pathWithoutLang = currentPath.replace(/^\/(hr|de)/, '') || '/';
+            const newPath = savedLang === 'en' ? pathWithoutLang : `/${savedLang}${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
+            window.location.replace(newPath);
+            return;
+          }
+        } else {
+          // No saved preference - detect from browser
+          const browserLangs = navigator.languages || [navigator.language];
+          let detectedLang = 'en'; // fallback
+
+          for (const lang of browserLangs) {
+            const primaryCode = lang.split('-')[0].toLowerCase();
+            if (availableLangs.includes(primaryCode)) {
+              detectedLang = primaryCode;
+              break;
+            }
+          }
+
+          // Save detected language
+          localStorage.setItem('language', detectedLang);
+
+          // Redirect if needed
+          if (detectedLang !== currentLang) {
+            const pathWithoutLang = currentPath.replace(/^\/(hr|de)/, '') || '/';
+            const newPath = detectedLang === 'en' ? pathWithoutLang : `/${detectedLang}${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
+            window.location.replace(newPath);
+            return;
+          }
+        }
+
+        // Ensure current language is saved
+        localStorage.setItem('language', currentLang);
+      })();
+    </script>
   </head>
   <body class="gradient-bg min-h-screen">
     <Header lang={lang} />
