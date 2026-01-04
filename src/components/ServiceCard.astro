@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  features: string[];
+  icon: string;
+}
+
+const { title, description, features, icon } = Astro.props;
+---
+
+<div class="glass-card group">
+  <div class="mb-6 inline-block p-4 rounded-2xl bg-white/5 group-hover:bg-accent/10 transition-colors duration-300">
+    <div class="text-accent group-hover:scale-110 transition-transform duration-300" set:html={icon} />
+  </div>
+  
+  <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors">{title}</h3>
+  <p class="text-neutral-400 mb-8 leading-relaxed">{description}</p>
+  
+  <ul class="space-y-3 border-t border-white/5 pt-6">
+    {features.map((feature) => (
+      <li class="flex items-start text-sm text-neutral-300">
+        <svg class="w-5 h-5 text-accent mr-3 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        {feature}
+      </li>
+    ))}
+  </ul>
+</div>

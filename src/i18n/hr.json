@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "SPORT LIVE - Pokretač profitabilnih kladionica",
+    "description": "Osnažite svoje poslovanje 24/7 stručnim tradingom, inteligentnom zaštitom od rizika i prilagođenim tržišnim rješenjima."
+  },
+  "nav": {
+    "services": "Rješenja",
+    "about": "Ekspertiza",
+    "partners": "Partneri",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Precizno Trgovanje. Maksimalna Kontrola.",
+    "subtitle": "Osnažite svoje poslovanje 24/7 stručnim tradingom, inteligentnom zaštitom od rizika i prilagođenim tržišnim rješenjima. Ne primajte samo oklade – upravljajte igrom.",
+    "cta": "Počnite pobjeđivati"
+  },
+  "services": {
+    "title": "Elite Betting Rješenja",
+    "subtitle": "Maksimizirajte svoje margine s našim profesionalnim alatima",
+    "odds": {
+      "title": "Strateško Trgovanje Kvotama",
+      "description": "24/7 kontrola tržišta. Mi ne pratimo samo linije; mi ih oblikujemo kako bismo maksimizirali vašu marginu koristeći stručno znanje.",
+      "features": ["Dubinska analiza konkurencije", "Live & Pre-match kontrola", "Maksimizacija margina"]
+    },
+    "risk": {
+      "title": "Inteligentna Kontrola Rizika",
+      "description": "Zaustavite nepotrebne gubitke. Napredno profiliranje igrača i limiti u stvarnom vremenu koji štite vaš profit bez gušenja volumena.",
+      "features": ["Detekcija rizičnih igrača", "Zaštita transakcija u stvarnom vremenu", "Pametna konfiguracija limita"]
+    },
+    "feeds": {
+      "title": "Agregacija Podataka",
+      "description": "Objedinjeni pristup najmoćnijim svjetskim izvorima podataka uključujući Betradar, Betgenius i LSports.",
+      "features": ["Testiranje latencije feedova", "Analiza pokrivenosti", "Optimizacija providera"]
+    },
+    "markets": {
+      "title": "Tržišne Inovacije",
+      "description": "Istaknite se. Mi razvijamo jedinstvena tržišta klađenja i formule koje konkurencija ne može jednostavno kopirati.",
+      "features": ["Prilagođeni matematički modeli", "Kreiranje ekskluzivnih tržišta", "Strategija diferencijacije"]
+    },
+    "product": {
+      "title": "Produkt Inženjering",
+      "description": "Od back-office sustava visokih performansi do vrhunskih front-end iskustava – gradimo tehnologiju koja pokreće kvote.",
+      "features": ["Prilagođeni Back-office", "UX/UI Optimizacija", "Custom Risk Softver"]
+    }
+  },
+  "about": {
+    "title": "Izgrađeno od strane Trading Stručnjaka",
+    "subtitle": "Mi nismo samo davatelj usluga. Mi smo vaš trading floor.",
+    "years": "Godina Izvrsnosti",
+    "support": "Podrška Uživo",
+    "reach": "Globalni Doseg",
+    "partnership": {
+      "title": "Dokazani Rezultati",
+      "description": "12 godina ekskluzivnog partnerstva s vrhunskim njemačkim operaterima poput Bet90/Tipster. Mi preuzimamo težak posao kako biste vi mogli rasti."
+    },
+    "expertise": {
+      "title": "Ljudska Inteligencija",
+      "description": "Algoritmi su odlični, ali nemaju instinkt. Naši traderi donose 10+ godina iskustva iz prve ruke u svaku odluku."
+    }
+  },
+  "partners": {
+    "title": "Mreža Podataka",
+    "subtitle": "Integrirani s gigantima industrije"
+  },
+  "contact": {
+    "title": "Unaprijedite Svoje Poslovanje",
+    "subtitle": "Spremni prestati ostavljati novac na stolu? Razgovarajmo o strategiji.",
+    "form": {
+      "name": "Ime",
+      "email": "Poslovni Email",
+      "message": "Recite nam o svojim izazovima...",
+      "submit": "Zatražite Konzultacije"
+    },
+    "info": {
+      "company": "SPORT LIVE d.o.o.",
+      "address": "Ulica Mak Dizdara 14",
+      "city": "23000 Zadar, Hrvatska",
+      "vat": "VAT: HR62053646972",
+      "oib": "OIB: 62053646972"
+    }
+  },
+  "footer": {
+    "rights": "Sva prava pridržana.",
+    "privacy": "Privatnost",
+    "terms": "Uvjeti"
+  }
+}

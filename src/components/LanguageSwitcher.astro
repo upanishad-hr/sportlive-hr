@@ -1,0 +1,39 @@
+---
+import { languages, type Lang } from '../i18n/utils';
+
+interface Props {
+  currentLang: Lang;
+}
+
+const { currentLang } = Astro.props;
+
+function getPath(lang: Lang): string {
+  const currentPath = Astro.url.pathname;
+  // Remove existing language prefix
+  const pathWithoutLang = currentPath.replace(/^\/(hr|de)/, '') || '/';
+
+  if (lang === 'en') return pathWithoutLang;
+  return `/${lang}${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
+}
+---
+
+<div class="flex items-center gap-1 text-sm">
+  {Object.entries(languages).map(([code, name], index) => (
+    <>
+      <a
+        href={getPath(code as Lang)}
+        class:list={[
+          'px-2 py-1 rounded transition-colors',
+          currentLang === code
+            ? 'text-accent font-semibold'
+            : 'text-neutral-400 hover:text-white'
+        ]}
+      >
+        {code.toUpperCase()}
+      </a>
+      {index < Object.entries(languages).length - 1 && (
+        <span class="text-neutral-600">|</span>
+      )}
+    </>
+  ))}
+</div>

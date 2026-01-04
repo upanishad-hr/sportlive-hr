@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "SPORT LIVE - The Engine Behind Profitable Bookmakers",
+    "description": "Empowering operators with 24/7 expert trading, intelligent risk shielding, and bespoke market solutions."
+  },
+  "nav": {
+    "services": "Solutions",
+    "about": "Expertise",
+    "partners": "Partners",
+    "contact": "Talk to Us"
+  },
+  "hero": {
+    "title": "Precision Trading. Maximum Control.",
+    "subtitle": "Empowering operators with 24/7 expert trading, intelligent risk shielding, and bespoke market solutions. Don't just take bets—manage the game.",
+    "cta": "Start winning"
+  },
+  "services": {
+    "title": "Elite Betting Solutions",
+    "subtitle": "Maximize your margins with our pro-grade toolkit",
+    "odds": {
+      "title": "Strategic Odds Trading",
+      "description": "24/7 market command. We don't just follow lines; we shape them to maximize your margin using veteran insights.",
+      "features": ["Deep Competitor Analysis", "Live & Pre-match Command", "Margin Maximization"]
+    },
+    "risk": {
+      "title": "Intelligent Risk Control",
+      "description": "Stop bleeding money. Advanced player profiling and real-time limits that protect your bottom line without killing volume.",
+      "features": ["Shark Detection", "Real-time Transaction Shield", "Smart Limit Configuration"]
+    },
+    "feeds": {
+      "title": "Data Feed Aggregation",
+      "description": "Unified access to the world's most powerful data streams including Betradar, Betgenius, and LSports.",
+      "features": ["Feed Latency Testing", "Coverage Analysis", "Provider Optimization"]
+    },
+    "markets": {
+      "title": "Market Innovation",
+      "description": "Stand out from the crowd. We engineer unique betting markets and formulas that competitors can't simply copy.",
+      "features": ["Custom Math Models", "Exclusive Market Creation", "Differentiation Strategy"]
+    },
+    "product": {
+      "title": "Product Engineering",
+      "description": "From high-performance back-office systems to slick front-end experiences, we build the tech that powers the odds.",
+      "features": ["Bespoke Back-office", "UX/UI Optimization", "Custom Risk Software"]
+    }
+  },
+  "about": {
+    "title": "Built by Traders",
+    "subtitle": "We are not just a service provider. We are your trading floor.",
+    "years": "Years Excellence",
+    "support": "Live Support",
+    "reach": "Global Reach",
+    "partnership": {
+      "title": "Proven Track Record",
+      "description": "12 years of exclusive partnership with top-tier German operators like Bet90/Tipster. We handle the heavy lifting so you can scale."
+    },
+    "expertise": {
+      "title": "Human Intelligence",
+      "description": "Algorithms are great, but they don't have instinct. Our traders bring 10+ years of battle-tested experience to every decision."
+    }
+  },
+  "partners": {
+    "title": "Data Network",
+    "subtitle": "Integrated with the industry giants"
+  },
+  "contact": {
+    "title": "Level Up Your Operation",
+    "subtitle": "Ready to stop leaving money on the table? Let's talk strategy.",
+    "form": {
+      "name": "Name",
+      "email": "Work Email",
+      "message": "Tell us about your challenges...",
+      "submit": "Request Consultation"
+    },
+    "info": {
+      "company": "SPORT LIVE d.o.o.",
+      "address": "Ulica Mak Dizdara 14",
+      "city": "23000 Zadar, Croatia",
+      "vat": "VAT: HR62053646972",
+      "oib": "OIB: 62053646972"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  }
+}

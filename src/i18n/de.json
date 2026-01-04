@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "title": "SPORT LIVE - Der Motor für profitable Buchmacher",
+    "description": "Stärken Sie Ihr Geschäft mit 24/7 Experten-Trading, intelligentem Risikoschutz und maßgeschneiderten Marktlösungen."
+  },
+  "nav": {
+    "services": "Lösungen",
+    "about": "Expertise",
+    "partners": "Partner",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "title": "Präzises Trading. Maximale Kontrolle.",
+    "subtitle": "Stärken Sie Ihr Geschäft mit 24/7 Experten-Trading, intelligentem Risikoschutz und maßgeschneiderten Marktlösungen. Nehmen Sie nicht nur Wetten an – kontrollieren Sie das Spiel.",
+    "cta": "Jetzt Gewinnen"
+  },
+  "services": {
+    "title": "Elite Wett-Lösungen",
+    "subtitle": "Maximieren Sie Ihre Margen mit unserem Profi-Toolkit",
+    "odds": {
+      "title": "Strategisches Quoten-Trading",
+      "description": "24/7 Marktkontrolle. Wir folgen nicht nur Linien; wir formen sie, um Ihre Marge mit Expertenwissen zu maximieren.",
+      "features": ["Tiefe Wettbewerbsanalyse", "Live & Pre-Match Kontrolle", "Margen-Maximierung"]
+    },
+    "risk": {
+      "title": "Intelligente Risikokontrolle",
+      "description": "Stoppen Sie unnötige Verluste. Erweitertes Spieler-Profiling und Echtzeit-Limits, die Ihren Gewinn schützen, ohne das Volumen zu drosseln.",
+      "features": ["Risikospieler-Erkennung", "Echtzeit-Transaktionsschutz", "Smarte Limit-Konfiguration"]
+    },
+    "feeds": {
+      "title": "Daten-Feed Aggregation",
+      "description": "Zentraler Zugriff auf die mächtigsten Datenströme der Welt, einschließlich Betradar, Betgenius und LSports.",
+      "features": ["Feed-Latenz-Tests", "Abdeckungsanalyse", "Provider-Optimierung"]
+    },
+    "markets": {
+      "title": "Markt-Innovation",
+      "description": "Heben Sie sich ab. Wir entwickeln einzigartige Wettmärkte und Formeln, die die Konkurrenz nicht einfach kopieren kann.",
+      "features": ["Maßgeschneiderte Mathe-Modelle", "Exklusive Markterstellung", "Differenzierungsstrategie"]
+    },
+    "product": {
+      "title": "Produkt-Engineering",
+      "description": "Von leistungsstarken Back-Office-Systemen bis hin zu glatten Front-End-Erlebnissen – wir bauen die Technik, die die Quoten antreibt.",
+      "features": ["Maßgeschneidertes Back-Office", "UX/UI Optimierung", "Custom Risiko-Software"]
+    }
+  },
+  "about": {
+    "title": "Von Tradern gebaut",
+    "subtitle": "Wir sind kein Dienstleister. Wir sind Ihr Trading Floor.",
+    "years": "Jahre Exzellenz",
+    "support": "Live Support",
+    "reach": "Globale Reichweite",
+    "partnership": {
+      "title": "Bewiesene Erfolgsbilanz",
+      "description": "12 Jahre exklusive Partnerschaft mit Top-Tier Betreibern wie Bet90/Tipster. Wir übernehmen die schwere Arbeit, damit Sie skalieren können."
+    },
+    "expertise": {
+      "title": "Menschliche Intelligenz",
+      "description": "Algorithmen sind gut, aber sie haben keinen Instinkt. Unsere Trader bringen 10+ Jahre kampferprobte Erfahrung in jede Entscheidung ein."
+    }
+  },
+  "partners": {
+    "title": "Daten-Netzwerk",
+    "subtitle": "Integriert mit den Giganten der Branche"
+  },
+  "contact": {
+    "title": "Optimieren Sie Ihren Betrieb",
+    "subtitle": "Bereit, kein Geld mehr auf dem Tisch liegen zu lassen? Lassen Sie uns über Strategie sprechen.",
+    "form": {
+      "name": "Name",
+      "email": "Geschäfts-E-Mail",
+      "message": "Erzählen Sie uns von Ihren Herausforderungen...",
+      "submit": "Beratung anfordern"
+    },
+    "info": {
+      "company": "SPORT LIVE d.o.o.",
+      "address": "Ulica Mak Dizdara 14",
+      "city": "23000 Zadar, Kroatien",
+      "vat": "USt-ID: HR62053646972",
+      "oib": "OIB: 62053646972"
+    }
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten.",
+    "privacy": "Datenschutz",
+    "terms": "AGB"
+  }
+}
