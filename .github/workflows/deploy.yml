@@ -1,0 +1,153 @@
+name: Deploy and Cleanup
+
+on:
+  push:
+    branches:
+      - '**'
+  delete:
+
+jobs:
+  deploy:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro
+        run: npm run build
+
+      - name: Transform branch name to subdomain
+        id: branch
+        run: |
+          BRANCH_NAME="${GITHUB_REF#refs/heads/}"
+          echo "Original branch: $BRANCH_NAME"
+
+          if [ "$BRANCH_NAME" = "main" ]; then
+            echo "subdomain=" >> $GITHUB_OUTPUT
+            echo "is_main=true" >> $GITHUB_OUTPUT
+            echo "deploy_dir=/var/www/sportlive" >> $GITHUB_OUTPUT
+            echo "site_url=sportlive.upanishad.hr" >> $GITHUB_OUTPUT
+          else
+            # Transform branch name: replace / and _ with -, lowercase, truncate to 63 chars
+            SUBDOMAIN=$(echo "$BRANCH_NAME" | tr '/_' '-' | tr '[:upper:]' '[:lower:]' | cut -c1-63)
+            echo "subdomain=$SUBDOMAIN" >> $GITHUB_OUTPUT
+            echo "is_main=false" >> $GITHUB_OUTPUT
+            echo "deploy_dir=/var/www/sportlive-$SUBDOMAIN" >> $GITHUB_OUTPUT
+            echo "site_url=$SUBDOMAIN.sportlive.upanishad.hr" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Create directory on server
+        run: |
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_HOST }} \
+            "mkdir -p ${{ steps.branch.outputs.deploy_dir }}"
+
+      - name: Deploy with rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -o StrictHostKeyChecking=no" \
+            dist/ \
+            root@${{ secrets.SERVER_HOST }}:${{ steps.branch.outputs.deploy_dir }}/
+
+      - name: Write Caddy config (non-main branches only)
+        if: steps.branch.outputs.is_main == 'false'
+        run: |
+          SUBDOMAIN="${{ steps.branch.outputs.subdomain }}"
+          CADDY_CONFIG="${SUBDOMAIN}.sportlive.upanishad.hr {
+              root * /var/www/sportlive-${SUBDOMAIN}
+              file_server
+              try_files {path} /index.html
+
+              header X-Frame-Options \"DENY\"
+              header X-Content-Type-Options \"nosniff\"
+              header Referrer-Policy \"strict-origin-when-cross-origin\"
+          }"
+
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_HOST }} \
+            "echo '$CADDY_CONFIG' > /etc/caddy/sites/sportlive-${SUBDOMAIN}.caddy"
+
+      - name: Reload Caddy
+        run: |
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_HOST }} \
+            "caddy reload --config /etc/caddy/Caddyfile"
+
+      - name: Deployment summary
+        run: |
+          echo "Deployed to: https://${{ steps.branch.outputs.site_url }}"
+
+  cleanup:
+    if: github.event_name == 'delete' && github.event.ref_type == 'branch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Transform deleted branch name to subdomain
+        id: branch
+        run: |
+          BRANCH_NAME="${{ github.event.ref }}"
+          echo "Deleted branch: $BRANCH_NAME"
+
+          if [ "$BRANCH_NAME" = "main" ]; then
+            echo "is_main=true" >> $GITHUB_OUTPUT
+            echo "subdomain=" >> $GITHUB_OUTPUT
+          else
+            # Transform branch name: replace / and _ with -, lowercase, truncate to 63 chars
+            SUBDOMAIN=$(echo "$BRANCH_NAME" | tr '/_' '-' | tr '[:upper:]' '[:lower:]' | cut -c1-63)
+            echo "subdomain=$SUBDOMAIN" >> $GITHUB_OUTPUT
+            echo "is_main=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Skip cleanup for main branch
+        if: steps.branch.outputs.is_main == 'true'
+        run: |
+          echo "Skipping cleanup for main branch - main deployment should never be deleted"
+          exit 0
+
+      - name: Setup SSH key
+        if: steps.branch.outputs.is_main == 'false'
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Remove deployment directory
+        if: steps.branch.outputs.is_main == 'false'
+        run: |
+          SUBDOMAIN="${{ steps.branch.outputs.subdomain }}"
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_HOST }} \
+            "rm -rf /var/www/sportlive-${SUBDOMAIN}"
+
+      - name: Remove Caddy config
+        if: steps.branch.outputs.is_main == 'false'
+        run: |
+          SUBDOMAIN="${{ steps.branch.outputs.subdomain }}"
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_HOST }} \
+            "rm -f /etc/caddy/sites/sportlive-${SUBDOMAIN}.caddy"
+
+      - name: Reload Caddy
+        if: steps.branch.outputs.is_main == 'false'
+        run: |
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_HOST }} \
+            "caddy reload --config /etc/caddy/Caddyfile"
+
+      - name: Cleanup summary
+        if: steps.branch.outputs.is_main == 'false'
+        run: |
+          echo "Cleaned up deployment for branch: ${{ github.event.ref }}"
+          echo "Removed: /var/www/sportlive-${{ steps.branch.outputs.subdomain }}"
+          echo "Removed: /etc/caddy/sites/sportlive-${{ steps.branch.outputs.subdomain }}.caddy"
