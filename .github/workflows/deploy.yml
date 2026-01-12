@@ -91,8 +91,19 @@ jobs:
           ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_HOST }} \
             "caddy reload --config /etc/caddy/Caddyfile"
 
-      - name: Deploy dashboard (main only)
+      - name: Check if dashboard changed
         if: steps.branch.outputs.is_main == 'true'
+        id: dashboard
+        run: |
+          git fetch origin main --depth=2
+          if git diff --name-only HEAD~1 HEAD | grep -q '^server/deployments/'; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Deploy dashboard (main only, if changed)
+        if: steps.branch.outputs.is_main == 'true' && steps.dashboard.outputs.changed == 'true'
         run: |
           rsync -avz --delete \
             -e "ssh -o StrictHostKeyChecking=no" \
