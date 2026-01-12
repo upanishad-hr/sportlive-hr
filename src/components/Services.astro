@@ -39,36 +39,41 @@ const icons = {
       <p class="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto font-light">{t.services.subtitle}</p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-8">
       <ServiceCard
         title={t.services.odds.title}
         description={t.services.odds.description}
         features={t.services.odds.features}
         icon={icons.odds}
+        class="lg:col-span-2"
       />
       <ServiceCard
         title={t.services.risk.title}
         description={t.services.risk.description}
         features={t.services.risk.features}
         icon={icons.risk}
+        class="lg:col-span-2"
       />
       <ServiceCard
         title={t.services.feeds.title}
         description={t.services.feeds.description}
         features={t.services.feeds.features}
         icon={icons.feeds}
+        class="lg:col-span-2"
       />
       <ServiceCard
         title={t.services.markets.title}
         description={t.services.markets.description}
         features={t.services.markets.features}
         icon={icons.markets}
+        class="lg:col-span-2 lg:col-start-2"
       />
       <ServiceCard
         title={t.services.product.title}
         description={t.services.product.description}
         features={t.services.product.features}
         icon={icons.product}
+        class="lg:col-span-2"
       />
     </div>
   </div>
