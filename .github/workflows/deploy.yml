@@ -71,6 +71,12 @@ jobs:
             dist/ \
             root@${{ secrets.SERVER_HOST }}:${{ steps.branch.outputs.deploy_dir }}/
 
+      - name: Remove old sportlive.hr Caddy config (main branch)
+        if: steps.branch.outputs.is_main == 'true'
+        run: |
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_HOST }} \
+            "grep -l 'sportlive.hr {' /etc/caddy/sites/*.caddy 2>/dev/null | xargs -r rm -f"
+
       - name: Write Caddy config (main branch)
         if: steps.branch.outputs.is_main == 'true'
         run: |
