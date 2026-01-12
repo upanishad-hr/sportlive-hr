@@ -11,43 +11,53 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-dark-900/80 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark-900/80 backdrop-blur-xl border-b border-neutral-200 dark:border-white/5 transition-all duration-300">
   <nav class="container-narrow mx-auto px-6 py-4 flex items-center justify-between">
     <a href={getLocalizedPath('/', lang)} class="flex items-center gap-3 group">
       <div class="relative w-10 h-10">
         <div class="absolute inset-0 bg-accent/20 rounded-full blur-md group-hover:bg-accent/40 transition-all"></div>
-        <svg class="relative w-10 h-10 drop-shadow-lg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 50C20 30 35 15 55 15C65 15 75 20 80 30" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
-          <path d="M80 50C80 70 65 85 45 85C35 85 25 80 20 70" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
-          <path d="M35 35L35 65" stroke="white" stroke-width="6" stroke-linecap="round"/>
-          <path d="M50 50L70 50" stroke="white" stroke-width="6" stroke-linecap="round"/>
+        <svg class="relative w-10 h-10 drop-shadow-lg text-neutral-900 dark:text-white" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 50C20 30 35 15 55 15C65 15 75 20 80 30" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M80 50C80 70 65 85 45 85C35 85 25 80 20 70" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M35 35L35 65" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M50 50L70 50" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
           <circle cx="75" cy="75" r="8" fill="#00D26A" class="animate-pulse"/>
         </svg>
       </div>
-      <span class="text-xl font-bold text-white tracking-tight">SPORT LIVE</span>
+      <span class="text-xl font-bold text-neutral-900 dark:text-white tracking-tight">SPORT LIVE</span>
     </a>
 
     <div class="hidden md:flex items-center gap-8">
-      <a href="#services" class="text-neutral-300 hover:text-white hover:text-shadow-glow transition-all text-sm font-medium">
+      <a href="#services" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:text-shadow-glow transition-all text-sm font-medium">
         {t.nav.services}
       </a>
-      <a href="#about" class="text-neutral-300 hover:text-white hover:text-shadow-glow transition-all text-sm font-medium">
+      <a href="#about" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:text-shadow-glow transition-all text-sm font-medium">
         {t.nav.about}
       </a>
-      <a href="#partners" class="text-neutral-300 hover:text-white hover:text-shadow-glow transition-all text-sm font-medium">
+      <a href="#partners" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:text-shadow-glow transition-all text-sm font-medium">
         {t.nav.partners}
       </a>
-      <a href="#contact" class="text-neutral-300 hover:text-white hover:text-shadow-glow transition-all text-sm font-medium">
+      <a href="#contact" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:text-shadow-glow transition-all text-sm font-medium">
         {t.nav.contact}
       </a>
-      <div class="pl-4 border-l border-white/10">
+      <div class="pl-4 border-l border-neutral-200 dark:border-white/10 flex items-center gap-4">
+        <button id="theme-toggle" class="text-neutral-500 dark:text-neutral-400 hover:text-accent transition-colors p-1" aria-label="Toggle Theme">
+          <!-- Sun Icon (shows in Dark mode) -->
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h1a1 1 0 100 2h-1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z" clip-rule="evenodd"></path>
+          </svg>
+          <!-- Moon Icon (shows in Light mode) -->
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+        </button>
         <LanguageSwitcher currentLang={lang} />
       </div>
     </div>
 
     <div class="md:hidden flex items-center gap-4">
       <LanguageSwitcher currentLang={lang} />
-      <button id="mobile-menu-btn" class="text-white p-2 hover:bg-white/10 rounded-lg transition-colors" aria-label="Menu">
+      <button id="mobile-menu-btn" class="text-neutral-800 dark:text-white p-2 hover:bg-neutral-100 dark:hover:bg-white/10 rounded-lg transition-colors" aria-label="Menu">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -56,16 +66,58 @@ const t = useTranslations(lang);
   </nav>
 
   <!-- Mobile menu -->
-  <div id="mobile-menu" class="md:hidden hidden bg-dark-900/95 backdrop-blur-xl border-t border-white/5 absolute w-full left-0">
+  <div id="mobile-menu" class="md:hidden hidden bg-white/95 dark:bg-dark-900/95 backdrop-blur-xl border-t border-neutral-200 dark:border-white/5 absolute w-full left-0">
     <div class="px-6 py-4 flex flex-col gap-4">
-      <a href="#services" class="text-neutral-300 hover:text-white transition-colors py-2 block">{t.nav.services}</a>
-      <a href="#about" class="text-neutral-300 hover:text-white transition-colors py-2 block">{t.nav.about}</a>
-      <a href="#partners" class="text-neutral-300 hover:text-white transition-colors py-2 block">{t.nav.partners}</a>
-      <a href="#contact" class="text-neutral-300 hover:text-white transition-colors py-2 block">{t.nav.contact}</a>
+      <a href="#services" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors py-2 block">{t.nav.services}</a>
+      <a href="#about" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors py-2 block">{t.nav.about}</a>
+      <a href="#partners" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors py-2 block">{t.nav.partners}</a>
+      <a href="#contact" class="text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors py-2 block">{t.nav.contact}</a>
     </div>
   </div>
 </header>
 
+<script>
+  // Mobile Menu Logic
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+    });
+  });
+
+  // Theme Toggle Logic
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+  // Set initial icon
+  if (document.documentElement.classList.contains('dark')) {
+    themeToggleLightIcon?.classList.remove('hidden');
+  } else {
+    themeToggleDarkIcon?.classList.remove('hidden');
+  }
+
+  themeToggleBtn?.addEventListener('click', function() {
+    // Toggle icons
+    themeToggleDarkIcon?.classList.toggle('hidden');
+    themeToggleLightIcon?.classList.toggle('hidden');
+
+    // If is dark mode
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+</script>
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');

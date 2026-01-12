@@ -29,6 +29,8 @@ jobs:
 
       - name: Build Astro
         run: npm run build
+        env:
+          PUBLIC_BUILD_VERSION: ${{ github.sha }}
 
       - name: Transform branch name to subdomain
         id: branch
@@ -69,14 +71,34 @@ jobs:
             dist/ \
             root@${{ secrets.SERVER_HOST }}:${{ steps.branch.outputs.deploy_dir }}/
 
-      - name: Write Caddy config (non-main branches only)
+      - name: Write Caddy config (main branch)
+        if: steps.branch.outputs.is_main == 'true'
+        run: |
+          CADDY_CONFIG='sportlive.hr {
+              root * /var/www/sportlive
+              file_server
+              try_files {path} {path}/ /index.html
+
+              header X-Frame-Options "DENY"
+              header X-Content-Type-Options "nosniff"
+              header Referrer-Policy "strict-origin-when-cross-origin"
+          }
+
+          www.sportlive.hr {
+              redir https://sportlive.hr{uri} permanent
+          }'
+
+          ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_HOST }} \
+            "echo '$CADDY_CONFIG' > /etc/caddy/sites/sportlive.caddy"
+
+      - name: Write Caddy config (feature branches)
         if: steps.branch.outputs.is_main == 'false'
         run: |
           SUBDOMAIN="${{ steps.branch.outputs.subdomain }}"
           CADDY_CONFIG="${SUBDOMAIN}.sportlive.upanishad.hr {
               root * /var/www/sportlive-${SUBDOMAIN}
               file_server
-              try_files {path} /index.html
+              try_files {path} {path}/ /index.html
 
               header X-Frame-Options \"DENY\"
               header X-Content-Type-Options \"nosniff\"

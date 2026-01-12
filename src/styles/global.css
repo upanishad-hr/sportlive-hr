@@ -9,8 +9,39 @@
     scroll-behavior: smooth;
   }
 
+  :root {
+    --bg-main: #ffffff;
+    --bg-secondary: #f3f4f6; /* gray-100 */
+    --text-main: #111827; /* gray-900 */
+    --text-muted: #6b7280; /* gray-500 */
+    --border-color: #e5e7eb; /* gray-200 */
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --grid-opacity: 0.05;
+  }
+
+  .dark {
+    --bg-main: #050505;
+    --bg-secondary: #0a0a0a;
+    --text-main: #f5f5f5;
+    --text-muted: #a3a3a3;
+    --border-color: rgba(255, 255, 255, 0.05);
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --grid-opacity: 0.2;
+  }
+
   body {
-    @apply font-sans text-neutral-100 bg-dark-900 antialiased overflow-x-hidden;
+    @apply font-sans antialiased overflow-x-hidden transition-colors duration-300;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+  }
+
+  /* Optional: Light mode background pattern */
+  body:not(.dark) {
+    background-image: radial-gradient(circle at 50% 0%, #f9fafb 0%, #ffffff 100%);
+  }
+  
+  /* Dark mode background pattern */
+  .dark body {
     background-image: radial-gradient(circle at 50% 0%, #121212 0%, #050505 100%);
   }
 
@@ -22,7 +53,8 @@
 @layer components {
   /* Modern Glass Button */
   .btn-primary {
-    @apply relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-dark-900 bg-accent rounded-xl transition-all duration-300;
+    @apply relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold bg-accent rounded-xl transition-all duration-300;
+    color: theme('colors.dark.900');
     box-shadow: 0 0 20px rgba(0, 210, 106, 0.4);
   }
   
@@ -49,12 +81,19 @@
 
   /* Glassmorphism Card */
   .glass-card {
-    @apply bg-dark-glass border border-white/5 backdrop-blur-md rounded-2xl p-8 transition-all duration-500 relative overflow-hidden;
-    background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+    @apply border backdrop-blur-md rounded-2xl p-8 transition-all duration-500 relative overflow-hidden;
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   }
 
   .glass-card:hover {
-    @apply border-accent/30 -translate-y-2;
+    @apply -translate-y-2;
+    border-color: theme('colors.accent.DEFAULT');
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .glass-card:hover {
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
   }
 

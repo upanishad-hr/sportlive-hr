@@ -9,34 +9,36 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const currentYear = new Date().getFullYear();
+const buildVersion = import.meta.env.PUBLIC_BUILD_VERSION?.slice(0, 7) || 'dev';
 ---
 
-<footer class="bg-dark-900 border-t border-white/5 relative">
-  <div class="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
+<footer class="bg-neutral-50 dark:bg-dark-900 border-t border-neutral-200 dark:border-white/5 relative transition-colors duration-300">
+  <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] dark:opacity-5 pointer-events-none"></div>
   <div class="container-narrow mx-auto px-6 py-12 relative z-10">
     <div class="flex flex-col md:flex-row items-center justify-between gap-6">
       <!-- Logo -->
       <div class="flex items-center gap-3">
-        <svg class="w-8 h-8 opacity-80 hover:opacity-100 transition-opacity" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 50C20 30 35 15 55 15C65 15 75 20 80 30" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
-          <path d="M80 50C80 70 65 85 45 85C35 85 25 80 20 70" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
-          <path d="M35 35L35 65" stroke="white" stroke-width="6" stroke-linecap="round"/>
-          <path d="M50 50L70 50" stroke="white" stroke-width="6" stroke-linecap="round"/>
+        <svg class="w-8 h-8 opacity-80 hover:opacity-100 transition-opacity text-neutral-900 dark:text-white" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 50C20 30 35 15 55 15C65 15 75 20 80 30" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M80 50C80 70 65 85 45 85C35 85 25 80 20 70" stroke="currentColor" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M35 35L35 65" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <path d="M50 50L70 50" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
           <circle cx="75" cy="75" r="8" fill="#00D26A"/>
         </svg>
-        <span class="text-lg font-bold text-white tracking-tight">SPORT LIVE</span>
+        <span class="text-lg font-bold text-neutral-900 dark:text-white tracking-tight">SPORT LIVE</span>
       </div>
 
       <!-- Links -->
-      <div class="flex items-center gap-8 text-sm text-neutral-400 font-medium">
+      <div class="flex items-center gap-8 text-sm text-neutral-600 dark:text-neutral-400 font-medium">
         <a href="#services" class="hover:text-accent transition-colors">{t.nav.services}</a>
         <a href="#about" class="hover:text-accent transition-colors">{t.nav.about}</a>
         <a href="#contact" class="hover:text-accent transition-colors">{t.nav.contact}</a>
       </div>
 
       <!-- Copyright -->
-      <div class="text-sm text-neutral-600">
+      <div class="text-sm text-neutral-500 dark:text-neutral-600">
         &copy; {currentYear} SPORT LIVE d.o.o. {t.footer.rights}
+        <span class="ml-2 text-xs opacity-50">v{buildVersion}</span>
       </div>
     </div>
   </div>
