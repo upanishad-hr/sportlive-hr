@@ -40,7 +40,7 @@ jobs:
             echo "subdomain=" >> $GITHUB_OUTPUT
             echo "is_main=true" >> $GITHUB_OUTPUT
             echo "deploy_dir=/var/www/sportlive" >> $GITHUB_OUTPUT
-            echo "site_url=sportlive.upanishad.hr" >> $GITHUB_OUTPUT
+            echo "site_url=sportlive.hr" >> $GITHUB_OUTPUT
           else
             # Transform branch name: replace / and _ with -, lowercase, truncate to 63 chars
             SUBDOMAIN=$(echo "$BRANCH_NAME" | tr '/_' '-' | tr '[:upper:]' '[:lower:]' | cut -c1-63)
