@@ -6,6 +6,10 @@ on:
       - '**'
   delete:
 
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     if: github.event_name == 'push'
@@ -86,6 +90,14 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no root@${{ secrets.SERVER_HOST }} \
             "caddy reload --config /etc/caddy/Caddyfile"
+
+      - name: Deploy dashboard (main only)
+        if: steps.branch.outputs.is_main == 'true'
+        run: |
+          rsync -avz --delete \
+            -e "ssh -o StrictHostKeyChecking=no" \
+            server/deployments/ \
+            root@${{ secrets.SERVER_HOST }}:/var/www/deployments/
 
       - name: Deployment summary
         run: |
