@@ -4,12 +4,13 @@ interface Props {
   description: string;
   features: string[];
   icon: string;
+  class?: string;
 }
 
-const { title, description, features, icon } = Astro.props;
+const { title, description, features, icon, class: className } = Astro.props;
 ---
 
-<div class="glass-card group">
+<div class={`glass-card group ${className || ''}`}>
   <div class="mb-6 inline-block p-4 rounded-2xl bg-neutral-100 dark:bg-white/5 group-hover:bg-accent/10 transition-colors duration-300">
     <div class="text-accent group-hover:scale-110 transition-transform duration-300" set:html={icon} />
   </div>
