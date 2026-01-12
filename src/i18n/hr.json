@@ -10,17 +10,17 @@
     "contact": "Kontakt"
   },
   "hero": {
-    "title": "Precizno Trgovanje. Maksimalna Kontrola.",
-    "subtitle": "Osnažite svoje poslovanje 24/7 stručnim tradingom, inteligentnom zaštitom od rizika i prilagođenim tržišnim rješenjima. Ne primajte samo oklade – upravljajte igrom.",
-    "cta": "Počnite pobjeđivati"
+    "title": "15 Godina Iskustva u Sportskom Klađenju",
+    "subtitle": "Prilagođena rješenja i konzultantske usluge koje pomažu kladionicama optimizirati poslovanje i ostati konkurentni na tržištu.",
+    "cta": "Kontaktirajte nas"
   },
   "services": {
     "title": "Elite Betting Rješenja",
     "subtitle": "Maksimizirajte svoje margine s našim profesionalnim alatima",
     "odds": {
-      "title": "Strateško Trgovanje Kvotama",
+      "title": "Strateško Trgovanje Koeficijentima",
       "description": "24/7 kontrola tržišta. Mi ne pratimo samo linije; mi ih oblikujemo kako bismo maksimizirali vašu marginu koristeći stručno znanje.",
-      "features": ["Dubinska analiza konkurencije", "Live & Pre-match kontrola", "Maksimizacija margina"]
+      "features": ["Dubinska analiza konkurencije", "Live & Prematch kontrola", "Maksimizacija margina"]
     },
     "risk": {
       "title": "Inteligentna Kontrola Rizika",
@@ -39,14 +39,14 @@
     },
     "product": {
       "title": "Produkt Inženjering",
-      "description": "Od back-office sustava visokih performansi do vrhunskih front-end iskustava – gradimo tehnologiju koja pokreće kvote.",
+      "description": "Od back-office sustava visokih performansi do vrhunskih front-end iskustava – gradimo tehnologiju koja pokreće koeficijente.",
       "features": ["Prilagođeni Back-office", "UX/UI Optimizacija", "Custom Risk Softver"]
     }
   },
   "about": {
     "title": "Izgrađeno od strane Trading Stručnjaka",
     "subtitle": "Mi nismo samo davatelj usluga. Mi smo vaš trading floor.",
-    "years": "Godina Izvrsnosti",
+    "years": "Godina Iskustva",
     "support": "Podrška Uživo",
     "reach": "Globalni Doseg",
     "partnership": {
@@ -55,7 +55,7 @@
     },
     "expertise": {
       "title": "Ljudska Inteligencija",
-      "description": "Algoritmi su odlični, ali nemaju instinkt. Naši traderi donose 10+ godina iskustva iz prve ruke u svaku odluku."
+      "description": "Algoritmi su odlični, ali nemaju instinkt. Naši traderi donose 15+ godina iskustva iz prve ruke u svaku odluku."
     }
   },
   "partners": {

@@ -10,9 +10,9 @@
     "contact": "Talk to Us"
   },
   "hero": {
-    "title": "Precision Trading. Maximum Control.",
-    "subtitle": "Empowering operators with 24/7 expert trading, intelligent risk shielding, and bespoke market solutions. Don't just take bets—manage the game.",
-    "cta": "Start winning"
+    "title": "15 Years of Sports Betting Experience",
+    "subtitle": "Tailored solutions and consulting services that help bookmakers optimize operations and remain competitive in the market.",
+    "cta": "Get in Touch"
   },
   "services": {
     "title": "Elite Betting Solutions",
@@ -20,7 +20,7 @@
     "odds": {
       "title": "Strategic Odds Trading",
       "description": "24/7 market command. We don't just follow lines; we shape them to maximize your margin using veteran insights.",
-      "features": ["Deep Competitor Analysis", "Live & Pre-match Command", "Margin Maximization"]
+      "features": ["Deep Competitor Analysis", "Live & Prematch Command", "Margin Maximization"]
     },
     "risk": {
       "title": "Intelligent Risk Control",
@@ -46,7 +46,7 @@
   "about": {
     "title": "Built by Traders",
     "subtitle": "We are not just a service provider. We are your trading floor.",
-    "years": "Years Excellence",
+    "years": "Years Experience",
     "support": "Live Support",
     "reach": "Global Reach",
     "partnership": {
@@ -55,7 +55,7 @@
     },
     "expertise": {
       "title": "Human Intelligence",
-      "description": "Algorithms are great, but they don't have instinct. Our traders bring 10+ years of battle-tested experience to every decision."
+      "description": "Algorithms are great, but they don't have instinct. Our traders bring 15+ years of battle-tested experience to every decision."
     }
   },
   "partners": {

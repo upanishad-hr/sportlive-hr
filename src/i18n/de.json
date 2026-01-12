@@ -10,9 +10,9 @@
     "contact": "Kontakt"
   },
   "hero": {
-    "title": "Präzises Trading. Maximale Kontrolle.",
-    "subtitle": "Stärken Sie Ihr Geschäft mit 24/7 Experten-Trading, intelligentem Risikoschutz und maßgeschneiderten Marktlösungen. Nehmen Sie nicht nur Wetten an – kontrollieren Sie das Spiel.",
-    "cta": "Jetzt Gewinnen"
+    "title": "15 Jahre Erfahrung im Sportwetten",
+    "subtitle": "Maßgeschneiderte Lösungen und Beratungsleistungen, die Buchmachern helfen, ihre Abläufe zu optimieren und wettbewerbsfähig zu bleiben.",
+    "cta": "Kontakt aufnehmen"
   },
   "services": {
     "title": "Elite Wett-Lösungen",
@@ -20,7 +20,7 @@
     "odds": {
       "title": "Strategisches Quoten-Trading",
       "description": "24/7 Marktkontrolle. Wir folgen nicht nur Linien; wir formen sie, um Ihre Marge mit Expertenwissen zu maximieren.",
-      "features": ["Tiefe Wettbewerbsanalyse", "Live & Pre-Match Kontrolle", "Margen-Maximierung"]
+      "features": ["Tiefe Wettbewerbsanalyse", "Live & Prematch Kontrolle", "Margen-Maximierung"]
     },
     "risk": {
       "title": "Intelligente Risikokontrolle",
@@ -46,7 +46,7 @@
   "about": {
     "title": "Von Tradern gebaut",
     "subtitle": "Wir sind kein Dienstleister. Wir sind Ihr Trading Floor.",
-    "years": "Jahre Exzellenz",
+    "years": "Jahre Erfahrung",
     "support": "Live Support",
     "reach": "Globale Reichweite",
     "partnership": {
@@ -55,7 +55,7 @@
     },
     "expertise": {
       "title": "Menschliche Intelligenz",
-      "description": "Algorithmen sind gut, aber sie haben keinen Instinkt. Unsere Trader bringen 10+ Jahre kampferprobte Erfahrung in jede Entscheidung ein."
+      "description": "Algorithmen sind gut, aber sie haben keinen Instinkt. Unsere Trader bringen 15+ Jahre kampferprobte Erfahrung in jede Entscheidung ein."
     }
   },
   "partners": {
