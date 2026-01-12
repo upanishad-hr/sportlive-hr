@@ -2,26 +2,40 @@
 
 ## Branch-Based Deployment
 
-Every git branch automatically gets deployed to a unique subdomain. **Always provide the deployment URL when:**
-- Creating a new branch
-- Creating a pull request
-- User asks for the URL
+Every git branch automatically gets deployed to a unique subdomain.
 
-### URL Construction Rules
+### IMPORTANT: Always Provide Deployment URL
 
-| Branch Name | URL |
-|-------------|-----|
+**You MUST provide the deployment URL when:**
+- Creating a new branch → immediately tell user the URL
+- Creating a pull request → include URL in PR description and tell user
+- User asks for URL → provide it
+
+### URL Construction
+
+**Step-by-step:**
+1. Take the branch name (e.g., `feature/my_thing`)
+2. Replace `/` and `_` with `-` → `feature-my-thing`
+3. Convert to lowercase
+4. Truncate to 63 characters if needed
+5. URL = `https://{result}.sportlive.upanishad.hr`
+
+**Special case:** `main` branch → `https://sportlive.upanishad.hr` (no subdomain)
+
+**Examples:**
+
+| Branch | URL |
+|--------|-----|
 | `main` | https://sportlive.upanishad.hr |
 | `develop` | https://develop.sportlive.upanishad.hr |
 | `feature/login` | https://feature-login.sportlive.upanishad.hr |
-| `matej/cool-thing` | https://matej-cool-thing.sportlive.upanishad.hr |
+| `matej/cool_thing` | https://matej-cool-thing.sportlive.upanishad.hr |
+| `fix/sportlive-bug` | https://fix-sportlive-bug.sportlive.upanishad.hr |
 
-**Transformation rules:**
-1. Replace `/` and `_` with `-`
-2. Convert to lowercase
-3. Truncate to 63 characters (DNS label limit)
+### Deployments Dashboard
 
-**Formula:** `https://{transformed-branch}.sportlive.upanishad.hr` (except `main` which is just `sportlive.upanishad.hr`)
+View all active deployments at: https://deployments.sportlive.upanishad.hr
+- **Auth:** admin / letsgo
 
 ## Infrastructure
 
