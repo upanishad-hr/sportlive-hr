@@ -6,14 +6,13 @@ on:
       - '**'
   delete:
 
-concurrency:
-  group: ${{ github.event_name }}-${{ github.event_name == 'delete' && github.event.ref || github.ref }}
-  cancel-in-progress: true
-
 jobs:
   deploy:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
