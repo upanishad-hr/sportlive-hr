@@ -7,7 +7,7 @@ on:
   delete:
 
 concurrency:
-  group: deploy-${{ github.ref }}
+  group: ${{ github.event_name }}-${{ github.event_name == 'delete' && github.event.ref || github.ref }}
   cancel-in-progress: true
 
 jobs:
